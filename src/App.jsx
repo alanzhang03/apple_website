@@ -6,9 +6,7 @@ function App() {
 		<main className="bg-black">
 			<Navbar></Navbar>
 			<Hero></Hero>
-      <Highlights></Highlights>
-      
-      
+			<Highlights></Highlights>
 		</main>
 	);
 }
