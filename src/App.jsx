@@ -12,9 +12,9 @@ function App() {
 			<Navbar />
 			<Hero />
 			<Highlights />
-			<Model />
 			<Features />
 			<HowItWorks />
+			<Model />
 			<Footer />
 		</main>
 	);
