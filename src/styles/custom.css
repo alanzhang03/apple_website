@@ -1,0 +1,16 @@
+
+.custom-scrollbar::-webkit-scrollbar {
+	@apply h-2;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+	@apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	@apply bg-gray-500 rounded-lg;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+	@apply bg-gray-700;
+}

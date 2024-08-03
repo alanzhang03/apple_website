@@ -5,12 +5,14 @@ import Model from "./components/Model";
 import Features from "./components/Features";
 import HowItWorks from "./components/HowItWorks";
 import Footer from "./components/Footer";
+import Snippets from "./components/Snippets";
 
 function App() {
 	return (
 		<main className="bg-black">
 			<Navbar />
 			<Hero />
+			<Snippets></Snippets>
 			<Highlights />
 			<Features />
 			<HowItWorks />

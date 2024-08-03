@@ -1,13 +1,15 @@
-import { useGSAP } from "@gsap/react";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { animateWithGsap } from "../utils/animations";
 import { explore1Img, explore2Img, exploreVideo } from "../utils";
-import gsap from "gsap";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Features = () => {
-	const videoRef = useRef();
+	const videoRef = useRef(null);
 
-	useGSAP(() => {
+	useEffect(() => {
 		gsap.to("#exploreVideo", {
 			scrollTrigger: {
 				trigger: "#exploreVideo",
@@ -15,7 +17,9 @@ const Features = () => {
 				start: "-10% bottom",
 			},
 			onComplete: () => {
-				videoRef.current.play();
+				if (videoRef.current) {
+					videoRef.current.play();
+				}
 			},
 		});
 
@@ -45,8 +49,8 @@ const Features = () => {
 				<div className="flex flex-col justify-center items-center overflow-hidden">
 					<div className="mt-32 mb-24 pl-24">
 						<h2 className="text-5xl lg:text-7xl font-semibold">iPhone.</h2>
-						<h2 className="text-5xl lg:text-7xl font-semibold">
-							Forged in titanium.
+						<h2 className="text-5xl lg:text-6xl font-semibold">
+							Designed to be loved.
 						</h2>
 					</div>
 

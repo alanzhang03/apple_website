@@ -1,5 +1,4 @@
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { heroVideo, smallHeroVideo } from "../utils";
 import { useEffect, useState } from "react";
 
@@ -9,24 +8,25 @@ const Hero = () => {
 	);
 
 	const handleVideoSrcSet = () => {
-		if (window.innerWidth < 760) {
-			setVideoSrc(smallHeroVideo);
-		} else {
-			setVideoSrc(heroVideo);
-		}
+		setVideoSrc(window.innerWidth < 760 ? smallHeroVideo : heroVideo);
 	};
 
 	useEffect(() => {
-		window.addEventListener("resize", handleVideoSrcSet);
-
-		return () => {
-			window.removeEventListener("reisze", handleVideoSrcSet);
+		const debouncedHandleResize = () => {
+			clearTimeout(timeoutId);
+			timeoutId = setTimeout(handleVideoSrcSet, 150);
 		};
-	}, []);
 
-	useGSAP(() => {
+		let timeoutId;
+		window.addEventListener("resize", debouncedHandleResize);
+
 		gsap.to("#hero", { opacity: 1, delay: 2 });
 		gsap.to("#cta", { opacity: 1, y: -50, delay: 2 });
+
+		return () => {
+			clearTimeout(timeoutId);
+			window.removeEventListener("resize", debouncedHandleResize);
+		};
 	}, []);
 
 	return (
